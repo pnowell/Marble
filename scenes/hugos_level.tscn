@@ -1,0 +1,132 @@
+[gd_scene load_steps=19 format=3 uid="uid://qbpbk2wb0auq"]
+
+[ext_resource type="PackedScene" uid="uid://xkmfxhccc8cm" path="res://models/marble_high.dae" id="1_1d3h5"]
+[ext_resource type="Script" path="res://scripts/MarbleCam.gd" id="2_frrlp"]
+[ext_resource type="PackedScene" uid="uid://c572itoa1ypvq" path="res://models/rampStart_D-col.dae" id="3_cwmqv"]
+[ext_resource type="PackedScene" uid="uid://dha5kdlp53wjp" path="res://models/split_double_sides-col.dae" id="4_vu7q5"]
+[ext_resource type="PackedScene" uid="uid://bitcmldh85nnm" path="res://models/slant_solid_long_B-col.dae" id="5_qc66g"]
+[ext_resource type="PackedScene" uid="uid://bc876dhdh06r4" path="res://models/straight-col.dae" id="6_mm7cv"]
+[ext_resource type="PackedScene" uid="uid://do0eh81fcjv0c" path="res://models/end_hole_rounded-col.dae" id="7_gp3la"]
+[ext_resource type="PackedScene" uid="uid://bbi48m0r0nk72" path="res://models/helix_right-col.dae" id="8_03ekw"]
+[ext_resource type="PackedScene" uid="uid://b5yefidhue564" path="res://models/bend_medium-col.dae" id="9_wfwpy"]
+[ext_resource type="PackedScene" uid="uid://qwvx1v56h1cp" path="res://models/curve_large-col.dae" id="10_btlr7"]
+[ext_resource type="PackedScene" uid="uid://cj7trhwceb55t" path="res://models/slant_A-col.dae" id="11_dn1ic"]
+[ext_resource type="PackedScene" uid="uid://ds74kq2spt4kj" path="res://models/corner-col.dae" id="12_4vf8v"]
+[ext_resource type="PackedScene" uid="uid://bq7le3pp7fqs6" path="res://models/bend-col.dae" id="13_nhs0e"]
+[ext_resource type="PackedScene" uid="uid://qlq4pnmb8t75" path="res://models/curve-col.dae" id="14_2dunw"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5lxr5"]
+sky_top_color = Color(0.423529, 0.686275, 0.882353, 1)
+sky_horizon_color = Color(0.655882, 0.713725, 0.753922, 1)
+ground_bottom_color = Color(0.2, 0.168627, 0.133333, 1)
+ground_horizon_color = Color(0.655882, 0.713725, 0.753922, 1)
+
+[sub_resource type="Sky" id="Sky_jx65m"]
+sky_material = SubResource("ProceduralSkyMaterial_5lxr5")
+
+[sub_resource type="Environment" id="Environment_wnv0n"]
+background_mode = 2
+sky = SubResource("Sky_jx65m")
+tonemap_mode = 2
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_5os5l"]
+radius = 0.204975
+
+[node name="Node3D" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.5, -2.18557e-08, 0, -4.37114e-08, 1, -0.5, 0.866025, 3.78552e-08, 0, 0, 0)
+light_color = Color(0.494118, 0.494118, 0.494118, 1)
+light_energy = 1.5
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_wnv0n")
+
+[node name="Marble" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.274212, 2, 0)
+mass = 1000.0
+can_sleep = false
+
+[node name="marble_high" parent="Marble" instance=ExtResource("1_1d3h5")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Marble"]
+shape = SubResource("SphereShape3D_5os5l")
+
+[node name="CameraSwivel" type="Node3D" parent="Marble"]
+
+[node name="Camera3D" type="Camera3D" parent="Marble/CameraSwivel"]
+transform = Transform3D(-1, 6.34628e-09, -8.71922e-08, -2.84102e-08, 0.919637, 0.39277, 8.26778e-08, 0.39277, -0.919637, 1.19209e-07, 1.06666, -1.69997)
+script = ExtResource("2_frrlp")
+
+[node name="helix_right-col" parent="." instance=ExtResource("8_03ekw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.20211, -5.00247, 3.58614)
+
+[node name="bend_medium-col" parent="." instance=ExtResource("9_wfwpy")]
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -5.20211, -5.00247, 0.58614)
+
+[node name="straight-col3" parent="." instance=ExtResource("6_mm7cv")]
+transform = Transform3D(3.0598e-07, 0, -1, 0, 1, 0, 1, 0, 3.0598e-07, -3.70211, -5.00247, -0.91386)
+
+[node name="straight-col4" parent="." instance=ExtResource("6_mm7cv")]
+transform = Transform3D(4.80825e-07, 0, -1, 0, 1, 0, 1, 0, 4.80825e-07, -2.70211, -5.00247, -0.913861)
+
+[node name="straight-col5" parent="." instance=ExtResource("6_mm7cv")]
+transform = Transform3D(6.55671e-07, 0, -1, 0, 1, 0, 1, 0, 6.55671e-07, -1.70211, -5.00247, -0.913861)
+
+[node name="straight-col6" parent="." instance=ExtResource("6_mm7cv")]
+transform = Transform3D(8.30516e-07, 0, -1, 0, 1, 0, 1, 0, 8.30516e-07, -0.702107, -5.00247, -0.913862)
+
+[node name="straight-col7" parent="." instance=ExtResource("6_mm7cv")]
+transform = Transform3D(-9.17939e-07, 0, 1, 0, 1, 0, -1, 0, -9.17939e-07, 0.297893, -5.00247, -0.913863)
+
+[node name="curve_large-col" parent="." instance=ExtResource("10_btlr7")]
+transform = Transform3D(1.00536e-06, 0, -1, 0, 1, 0, 1, 0, 1.00536e-06, 2.29789, -5.00247, 0.0861352)
+
+[node name="straight-col8" parent="." instance=ExtResource("6_mm7cv")]
+transform = Transform3D(-1.09278e-06, 0, 1, 0, 1, 0, -1, 0, -1.09278e-06, 4.2979, -5.00247, 2.08613)
+
+[node name="helix_right-col2" parent="." instance=ExtResource("8_03ekw")]
+transform = Transform3D(1, 0, 8.74228e-07, 0, 1, 0, -8.74228e-07, 0, 1, 5.7979, -4.75247, 3.58613)
+
+[node name="slant_A-col" parent="." instance=ExtResource("11_dn1ic")]
+transform = Transform3D(1.00536e-06, 0, -1, 0, 1, 0, 1, 0, 1.00536e-06, 5.2979, -5.00247, 2.08613)
+
+[node name="corner-col" parent="." instance=ExtResource("12_4vf8v")]
+transform = Transform3D(-1.09278e-06, 0, 1, 0, 1, 0, -1, 0, -1.09278e-06, 3.2979, -5.00247, 2.08613)
+
+[node name="helix_right-col3" parent="." instance=ExtResource("8_03ekw")]
+transform = Transform3D(1, 0, 8.74228e-07, 0, 1, 0, -8.74228e-07, 0, 1, 5.7979, -2.75247, 3.58613)
+
+[node name="bend-col" parent="." instance=ExtResource("13_nhs0e")]
+transform = Transform3D(-1, 0, -9.61651e-07, 0, 1, 0, 9.61651e-07, 0, -1, 6.29789, -0.752467, 1.58613)
+
+[node name="bend-col2" parent="." instance=ExtResource("13_nhs0e")]
+transform = Transform3D(1, 0, 1.04907e-06, 0, 1, 0, -1.04907e-06, 0, 1, 5.29789, -0.752467, 0.586132)
+
+[node name="bend-col3" parent="." instance=ExtResource("13_nhs0e")]
+transform = Transform3D(-1, 0, -1.1365e-06, 0, 1, 0, 1.1365e-06, 0, -1, 6.29789, -0.752467, -0.413869)
+
+[node name="straight-col" parent="." instance=ExtResource("6_mm7cv")]
+transform = Transform3D(-1.26763e-06, 0, 1, 0, 1, 0, -1, 0, -1.26763e-06, 5.29789, -0.752467, -0.913867)
+
+[node name="rampStart_D-col" parent="." instance=ExtResource("3_cwmqv")]
+transform = Transform3D(1, 0, 1.04907e-06, 0, 1, 0, -1.04907e-06, 0, 1, 0.297894, -0.752467, 0.0861386)
+
+[node name="straight-col2" parent="." instance=ExtResource("6_mm7cv")]
+transform = Transform3D(-1.26763e-06, 0, 1, 0, 1, 0, -1, 0, -1.26763e-06, -3.7021, -1.25247, 2.08614)
+
+[node name="slant_solid_long_B-col" parent="." instance=ExtResource("5_qc66g")]
+transform = Transform3D(1.18021e-06, 0, -1, 0, 1, 0, 1, 0, 1.18021e-06, -2.2021, -1.25247, 2.08614)
+
+[node name="split_double_sides-col" parent="." instance=ExtResource("4_vu7q5")]
+transform = Transform3D(-1, 0, -1.1365e-06, 0, 1, 0, 1.1365e-06, 0, -1, 0.297896, -0.752467, 1.58614)
+
+[node name="curve-col2" parent="." instance=ExtResource("14_2dunw")]
+transform = Transform3D(-1, 0, -1.31134e-06, 0, 1, 0, 1.31134e-06, 0, -1, 2.7979, -0.752467, 1.58614)
+
+[node name="end_hole_rounded-col" parent="." instance=ExtResource("7_gp3la")]
+transform = Transform3D(-1.44248e-06, 0, 1, 0, 1, 0, -1, 0, -1.44248e-06, -4.7021, -1.25247, 2.08615)
+
+[node name="curve-col" parent="." instance=ExtResource("14_2dunw")]
+transform = Transform3D(1, 0, 1.39876e-06, 0, 1, 0, -1.39876e-06, 0, 1, 3.79789, -0.752467, -0.413865)

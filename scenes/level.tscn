@@ -1,0 +1,51 @@
+[gd_scene load_steps=8 format=3 uid="uid://b3hoafs0njk6g"]
+
+[ext_resource type="PackedScene" uid="uid://xkmfxhccc8cm" path="res://models/marble_high.dae" id="1_7lhhw"]
+[ext_resource type="Script" path="res://scripts/MarbleCam.gd" id="2_0wbhp"]
+[ext_resource type="PackedScene" uid="uid://c572itoa1ypvq" path="res://models/rampStart_D-col.dae" id="3_k6dsf"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5lxr5"]
+sky_top_color = Color(0.423529, 0.686275, 0.882353, 1)
+sky_horizon_color = Color(0.655882, 0.713725, 0.753922, 1)
+ground_bottom_color = Color(0.2, 0.168627, 0.133333, 1)
+ground_horizon_color = Color(0.655882, 0.713725, 0.753922, 1)
+
+[sub_resource type="Sky" id="Sky_jx65m"]
+sky_material = SubResource("ProceduralSkyMaterial_5lxr5")
+
+[sub_resource type="Environment" id="Environment_wnv0n"]
+background_mode = 2
+sky = SubResource("Sky_jx65m")
+tonemap_mode = 2
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_5os5l"]
+radius = 0.204975
+
+[node name="Node3D" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.5, -2.18557e-08, 0, -4.37114e-08, 1, -0.5, 0.866025, 3.78552e-08, 0, 0, 0)
+light_color = Color(0.737255, 0.737255, 0.737255, 1)
+light_energy = 1.5
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_wnv0n")
+
+[node name="Marble" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+can_sleep = false
+
+[node name="marble_high" parent="Marble" instance=ExtResource("1_7lhhw")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Marble"]
+shape = SubResource("SphereShape3D_5os5l")
+
+[node name="CameraSwivel" type="Node3D" parent="Marble"]
+
+[node name="Camera3D" type="Camera3D" parent="Marble/CameraSwivel"]
+transform = Transform3D(-1, 6.34635e-09, -8.71922e-08, -2.84102e-08, 0.919637, 0.39277, 8.26778e-08, 0.39277, -0.919637, 1.43684e-07, 1.06666, -1.69997)
+fov = 97.7291
+script = ExtResource("2_0wbhp")
+
+[node name="rampStart_D-col" parent="." instance=ExtResource("3_k6dsf")]

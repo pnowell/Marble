@@ -1,0 +1,178 @@
+[gd_scene load_steps=19 format=3 uid="uid://cq21fk7f84ypg"]
+
+[ext_resource type="PackedScene" uid="uid://xkmfxhccc8cm" path="res://models/marble_high.dae" id="1_dcwlx"]
+[ext_resource type="Script" path="res://scripts/MarbleCam.gd" id="2_w1ko6"]
+[ext_resource type="PackedScene" uid="uid://c572itoa1ypvq" path="res://models/rampStart_D-col.dae" id="3_1qobj"]
+[ext_resource type="PackedScene" uid="uid://cj7trhwceb55t" path="res://models/slant_A-col.dae" id="4_bn1wi"]
+[ext_resource type="PackedScene" uid="uid://3hii8lg0ijqm" path="res://models/slant_B-col.dae" id="5_8llvo"]
+[ext_resource type="PackedScene" uid="uid://ci4cemr42xgyt" path="res://models/slant_C-col.dae" id="6_hbfby"]
+[ext_resource type="PackedScene" uid="uid://dchqj76iccrwk" path="res://models/slant_D-col.dae" id="7_jb3pr"]
+[ext_resource type="PackedScene" uid="uid://5nmxlwedsns1" path="res://models/funnel_long-col.dae" id="8_qxy3x"]
+[ext_resource type="PackedScene" uid="uid://w8n2gtgrxuuj" path="res://models/straight_wide_hole-col.dae" id="9_u6x0u"]
+[ext_resource type="PackedScene" uid="uid://dgmtutmut6wll" path="res://models/straight_hole-col.dae" id="10_sb2gf"]
+[ext_resource type="PackedScene" uid="uid://do0eh81fcjv0c" path="res://models/end_hole_rounded-col.dae" id="11_x7fkn"]
+[ext_resource type="PackedScene" uid="uid://bc876dhdh06r4" path="res://models/straight-col.dae" id="12_ah47h"]
+[ext_resource type="PackedScene" uid="uid://3mupwyv25nvu" path="res://models/ramp_long_D-col.dae" id="13_ueqnu"]
+[ext_resource type="PackedScene" uid="uid://dha5kdlp53wjp" path="res://models/split_double_sides-col.dae" id="14_27710"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5lxr5"]
+sky_top_color = Color(0.423529, 0.686275, 0.882353, 1)
+sky_horizon_color = Color(0.655882, 0.713725, 0.753922, 1)
+ground_bottom_color = Color(0.2, 0.168627, 0.133333, 1)
+ground_horizon_color = Color(0.655882, 0.713725, 0.753922, 1)
+
+[sub_resource type="Sky" id="Sky_jx65m"]
+sky_material = SubResource("ProceduralSkyMaterial_5lxr5")
+
+[sub_resource type="Environment" id="Environment_wnv0n"]
+background_mode = 2
+sky = SubResource("Sky_jx65m")
+tonemap_mode = 2
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_5os5l"]
+radius = 0.204975
+
+[node name="Node3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_wnv0n")
+
+[node name="Marble" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.28246, -9.12918)
+mass = 1000.0
+can_sleep = false
+
+[node name="marble_high" parent="Marble" instance=ExtResource("1_dcwlx")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Marble"]
+shape = SubResource("SphereShape3D_5os5l")
+
+[node name="CameraSwivel" type="Node3D" parent="Marble"]
+
+[node name="Camera3D" type="Camera3D" parent="Marble/CameraSwivel"]
+transform = Transform3D(-1, 6.34635e-09, -8.71922e-08, -2.84102e-08, 0.919637, 0.39277, 8.26778e-08, 0.39277, -0.919637, 1.43684e-07, 1.06666, -1.69997)
+fov = 97.7291
+script = ExtResource("2_w1ko6")
+
+[node name="slant_A-col" parent="." instance=ExtResource("4_bn1wi")]
+transform = Transform3D(1, 0, 1.04907e-06, 0, 1, 0, -1.04907e-06, 0, 1, 0, 0.191382, -7.58492)
+
+[node name="slant_B-col" parent="." instance=ExtResource("5_8llvo")]
+transform = Transform3D(1, 0, 1.04907e-06, 0, 1, 0, -1.04907e-06, 0, 1, 0, -2.8515, -2.80299)
+
+[node name="slant_C-col" parent="." instance=ExtResource("6_hbfby")]
+transform = Transform3D(1, 0, 1.04907e-06, 0, 1, 0, -1.04907e-06, 0, 1, 0, -5.4224, -5.55976)
+
+[node name="slant_D-col" parent="." instance=ExtResource("7_jb3pr")]
+transform = Transform3D(1, 0, 1.04907e-06, 0, 1, 0, -1.04907e-06, 0, 1, 0, -3.47615, -7.41572)
+
+[node name="slant_D-col2" parent="." instance=ExtResource("7_jb3pr")]
+transform = Transform3D(1, 0, 1.04907e-06, 0, 1, 0, -1.04907e-06, 0, 1, 0, -1.89144, -5.20483)
+
+[node name="slant_D-col3" parent="." instance=ExtResource("7_jb3pr")]
+transform = Transform3D(1, 0, 1.04907e-06, 0, 1, 0, -1.04907e-06, 0, 1, 0, 0.646246, -9.85484)
+
+[node name="slant_D-col4" parent="." instance=ExtResource("7_jb3pr")]
+transform = Transform3D(1, 0, 1.04907e-06, 0, 1, 0, -1.04907e-06, 0, 1, 0, -4.66454, -4.65851)
+
+[node name="slant_D-col5" parent="." instance=ExtResource("7_jb3pr")]
+transform = Transform3D(1, 0, 1.04907e-06, 0, 1, 0, -1.04907e-06, 0, 1, 0, -2.93199, -10.4979)
+
+[node name="slant_B-col2" parent="." instance=ExtResource("5_8llvo")]
+transform = Transform3D(1, 0, 1.04907e-06, 0, 1, 0, -1.04907e-06, 0, 1, 0, -1.63694, -9.0636)
+
+[node name="slant_A-col2" parent="." instance=ExtResource("4_bn1wi")]
+transform = Transform3D(1, 0, 1.04907e-06, 0, 1, 0, -1.04907e-06, 0, 1, 0, 1.19271, -5.92304)
+
+[node name="rampStart_D-col2" parent="." instance=ExtResource("3_1qobj")]
+transform = Transform3D(1, 0, 1.04907e-06, 0, 1, 0, -1.04907e-06, 0, 1, 0, 3.96339, -8.89971)
+
+[node name="slant_C-col3" parent="." instance=ExtResource("6_hbfby")]
+transform = Transform3D(1, 0, 1.04907e-06, 0, 1, 0, -1.04907e-06, 0, 1, 0, -4.87863, -8.90696)
+
+[node name="slant_C-col2" parent="." instance=ExtResource("6_hbfby")]
+transform = Transform3D(1, 0, 1.04907e-06, 0, 1, 0, -1.04907e-06, 0, 1, 0, -6.11985, -6.95922)
+
+[node name="rampStart_D-col" parent="." instance=ExtResource("3_1qobj")]
+transform = Transform3D(1, 0, 1.04907e-06, 0, 1, 0, -1.04907e-06, 0, 1, 0, 0.465531, -4.0006)
+
+[node name="funnel_long-col" parent="." instance=ExtResource("8_qxy3x")]
+transform = Transform3D(1, 0, 1.22392e-06, 0, 1, 0, -1.22392e-06, 0, 1, 1.65044e-05, -6.5, 14.9975)
+
+[node name="funnel_long-col2" parent="." instance=ExtResource("8_qxy3x")]
+transform = Transform3D(-1, 0, -1.13649e-06, 0, 1, 0, 1.13649e-06, 0, -1, 1.173e-05, -6.5, 11)
+
+[node name="straight_wide_hole-col" parent="." instance=ExtResource("9_u6x0u")]
+transform = Transform3D(1, 0, 1.22392e-06, 0, 1, 0, -1.22392e-06, 0, 1, 1.40506e-05, -6.5, 12.9975)
+
+[node name="straight_hole-col2" parent="." instance=ExtResource("10_sb2gf")]
+transform = Transform3D(1, 0, 1.04907e-06, 0, 1, 0, -1.04907e-06, 0, 1, 9.50669e-06, -6.5, 9)
+
+[node name="straight_hole-col" parent="." instance=ExtResource("10_sb2gf")]
+transform = Transform3D(1, 0, 1.04907e-06, 0, 1, 0, -1.04907e-06, 0, 1, 9.50669e-06, -6.5, 9)
+
+[node name="end_hole_rounded-col" parent="." instance=ExtResource("11_x7fkn")]
+transform = Transform3D(-1, 0, -1.31134e-06, 0, 1, 0, 1.31134e-06, 0, -1, 2.02204e-05, -6.5, 17.9975)
+
+[node name="straight-col" parent="." instance=ExtResource("12_ah47h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0349553, -8.67914, 9.11208)
+
+[node name="ramp_long_D-col" parent="." instance=ExtResource("13_ueqnu")]
+transform = Transform3D(1, 0, 3.49691e-07, 0, 1, 0, -3.49691e-07, 0, 1, -0.034956, -8.67914, 5.61208)
+
+[node name="split_double_sides-col" parent="." instance=ExtResource("14_27710")]
+transform = Transform3D(-1, 0, -8.74227e-08, 0, 1, 0, 8.74227e-08, 0, -1, -0.0349549, -8.67914, 26.6121)
+
+[node name="straight-col2" parent="." instance=ExtResource("12_ah47h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0349553, -8.67914, 18.1121)
+
+[node name="straight-col3" parent="." instance=ExtResource("12_ah47h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0349553, -8.67914, 12.1121)
+
+[node name="straight-col4" parent="." instance=ExtResource("12_ah47h")]
+transform = Transform3D(-1, 0, -2.62268e-07, 0, 1, 0, 2.62268e-07, 0, -1, -0.0349551, -8.67914, 24.1121)
+
+[node name="straight-col5" parent="." instance=ExtResource("12_ah47h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0349553, -8.67914, 19.1121)
+
+[node name="straight-col6" parent="." instance=ExtResource("12_ah47h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0349553, -8.67914, 22.1121)
+
+[node name="straight-col7" parent="." instance=ExtResource("12_ah47h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0349553, -8.67914, 20.1121)
+
+[node name="straight-col8" parent="." instance=ExtResource("12_ah47h")]
+transform = Transform3D(-1, 0, -4.37114e-07, 0, 1, 0, 4.37114e-07, 0, -1, -0.0349547, -8.67914, 25.1121)
+
+[node name="straight-col9" parent="." instance=ExtResource("12_ah47h")]
+transform = Transform3D(1, 0, 3.49691e-07, 0, 1, 0, -3.49691e-07, 0, 1, -0.0349557, -8.67914, 7.11208)
+
+[node name="straight-col10" parent="." instance=ExtResource("12_ah47h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0349553, -8.67914, 14.1121)
+
+[node name="straight-col11" parent="." instance=ExtResource("12_ah47h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0349553, -8.67914, 13.1121)
+
+[node name="straight-col12" parent="." instance=ExtResource("12_ah47h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0349553, -8.67914, 17.1121)
+
+[node name="straight-col13" parent="." instance=ExtResource("12_ah47h")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.0349553, -8.67914, 23.1121)
+
+[node name="straight-col14" parent="." instance=ExtResource("12_ah47h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0349553, -8.67914, 15.1121)
+
+[node name="straight-col15" parent="." instance=ExtResource("12_ah47h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0349553, -8.67914, 10.1121)
+
+[node name="straight-col16" parent="." instance=ExtResource("12_ah47h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0349553, -8.67914, 21.1121)
+
+[node name="straight-col17" parent="." instance=ExtResource("12_ah47h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0349553, -8.67914, 11.1121)
+
+[node name="straight-col18" parent="." instance=ExtResource("12_ah47h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0349553, -8.67914, 16.1121)
+
+[node name="straight-col19" parent="." instance=ExtResource("12_ah47h")]
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -0.0349554, -8.67914, 8.11208)
