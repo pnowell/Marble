@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://b3hoafs0njk6g"]
 
-[ext_resource type="PackedScene" uid="uid://xkmfxhccc8cm" path="res://models/marble_high.dae" id="1_7lhhw"]
+[ext_resource type="PackedScene" uid="uid://1fyviamt2jc" path="res://models/marble_high.dae" id="1_7lhhw"]
 [ext_resource type="Script" path="res://scripts/MarbleCam.gd" id="2_0wbhp"]
-[ext_resource type="PackedScene" uid="uid://c572itoa1ypvq" path="res://models/rampStart_D-col.dae" id="3_k6dsf"]
+[ext_resource type="PackedScene" uid="uid://dsg101hd6pghl" path="res://models/rampStart_D-col.dae" id="3_k6dsf"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5lxr5"]
 sky_top_color = Color(0.423529, 0.686275, 0.882353, 1)
